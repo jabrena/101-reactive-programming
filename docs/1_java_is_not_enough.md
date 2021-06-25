@@ -107,6 +107,29 @@ Source: https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/j
 
 **Stream.java**
 
+A sequence of elements supporting sequential and parallel aggregate operations. The following example illustrates an aggregate operation using Stream and IntStream:
+
+![](images/java-stream.png)
+
+```java
+    private final int THREE = 3;
+    private final int FIVE = 5;
+    BiPredicate<Integer, Integer> isMultiple = (l, i) -> l % i == 0;
+    Predicate<Integer> isMultiple3 = number -> isMultiple.test(number, THREE);
+    Predicate<Integer> isMultiple5 = number -> isMultiple.test(number, FIVE);
+
+    public Integer JavaStreamSolution(Integer limit) {
+
+        return IntStream.range(1, limit).boxed()
+                .filter(isMultiple3.or(isMultiple5))
+                .reduce(0, Integer::sum);
+    }
+```
+
+A stream pipeline consists of a stream source,
+followed by zero or more intermediate operations,
+and a terminal operation.
+
 ```java
 package java.util.stream;
 
