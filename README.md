@@ -4,6 +4,12 @@
 
 - [Docs](./docs/README.md)
 
+## Setup
+
+```
+sdk use java 16.0.1.hs-adpt
+```
+
 ## References
 
 - https://projectreactor.io/
